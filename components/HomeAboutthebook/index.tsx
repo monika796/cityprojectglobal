@@ -62,11 +62,11 @@ const FifthSection = ({ data, Video_gif }) => {
 
     <div className="container my-10 mx-auto max-w-[1481px]">
       <div
-        className="flex flex-col md:flex-row w-[100%] pb-[0px] mx-auto items-center rounded-[5px]"
+        className="flex flex-col md:flex-col lg:flex-row w-[100%] pb-[0px] mx-auto items-center rounded-[5px]"
         style={{ backgroundColor: "rgb(3, 4, 2)" }}
       >
         {/* Left Content */}
-        <div className="md:w-5/12 w-full p-[40px] md:p-[26px] mt-10 md:mt-0">
+        <div className="md:w-full lg:w-5/12 w-full p-[40px] md:p-[26px] mt-10 md:mt-0">
           <span className="text-[18px] bg-[#fff] text-black font-bold mx-auto md:mx-0 text-center w-[45%] rounded-[20px] px-4 py-1 font-bold">
             {data.page.homefifthsection.fifthfirstsubtitle}
           </span>
@@ -92,12 +92,12 @@ const FifthSection = ({ data, Video_gif }) => {
         </div>
 
         {/* Right Content */}
-        <div className="md:w-8/12 md:py-[0px] relative">
+        <div className="md:w-full lg:w-8/12 md:py-[0px] relative video_hover">
           {/* Black Box for Video */}
           <div className="bg-[rgb(3, 4, 2)]  rounded-lg">
             {isPlaying ? (
               <button
-                className="absolute inset-0 md:bottom-0 bottom-[40%] flex items-center justify-center text-white text-3xl rounded-full"
+                className="absolute inset-0 hover_elementss md:bottom-0 bottom-[40%] flex items-center justify-center text-white text-3xl rounded-full"
               >
                 <svg
                   fill="#fff"
@@ -137,7 +137,7 @@ const FifthSection = ({ data, Video_gif }) => {
             {Played &&(
               <video
                 ref={videoRef}
-                className="w-full"
+                className="w-full "
                 src="videoplayback.mp4"
                 onClick={handleVideoClick}
                 autoPlay

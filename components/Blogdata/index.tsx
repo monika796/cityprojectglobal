@@ -66,7 +66,7 @@ const BlogCard = ({ image, index, date, title, description, linkText, linkHref }
           </div>
           <div className="border rounded-lg shadow-sm p-0 h-[483px]">
             <Image
-              src={image || '/No_Image.jpg'} // Replace with your image path
+              src={image  || '/No_Image.jpg'} // Replace with your image path
               alt={title || "Blog Image"} // Fallback for alt attribute
               className="w-full h-64 lg:h-full object-cover" width={10000} height={10000}
             />

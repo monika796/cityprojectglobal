@@ -6,6 +6,7 @@ import client from 'apollo-client';
 import BlogCard from "@/components/Blogdata";
 import Image from "next/image";
 import Link from "next/link";
+
 export const metadata: Metadata = {
 title: "Blog Page - Solid SaaS Boilerplate",
 description: "This is Blog page for Solid Pro",
@@ -112,7 +113,7 @@ return (
             </div>
             <div className="flex justify-end items-center">
                <div className="flex items-end space-x-2">
-                  <Image  src={data.page.blogPageFeilds.blogSecondSection.blogPageRightImage?.node?.link || '/No_Image.jpg'} // Replace with your small image path
+                  <Image  src={data.page.blogPageFeilds.blogSecondSection.blogPageRightImage?.node?.link  || '/No_Image.jpg'} // Replace with your small image path
                      alt="Nature"
                      className=" object-cover rounded" layout="responsive" width={16} height={9} />
                  
