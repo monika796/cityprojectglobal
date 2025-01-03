@@ -106,7 +106,7 @@ console.log(partner_immm);
            <Image src={partner_images.addPartnersImages?.node?.link || '/No_Image.jpg'} alt='' width={800} height={500} className="w-[150px] h-[150px] p-[33px] border border-[#e3e2e2] object-contain mx-auto" /> 
 
         ))}
-
+ 
               
             <div className=" relative bg-black text-white p-[27px] w-[150px] h-[150px] flex items-center justify-center mx-auto">
               <div className="text-left absolute bottom-[15px] w-[89%]">
