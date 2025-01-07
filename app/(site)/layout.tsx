@@ -28,7 +28,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`overflow-x-hidden dark:bg-black ${inter.className} `}>
+      <body className={`overflow-x-hidden dark:bg-white ${inter.className} `}>
         <ApolloProvider client={client}>
           <ThemeProvider
             enableSystem={false}
