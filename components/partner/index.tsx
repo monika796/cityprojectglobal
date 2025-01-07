@@ -93,7 +93,7 @@ export default async function Partner() {
   
   const { patnerssection, homesixthsection } = data.page;
   const partner_immm =data.page.patnerssection.partnerImages.partnerImages;
-console.log(partner_immm);
+// console.log(partner_immm);
 
   return (
     <div className="container mx-auto max-w-[1280px]" > 

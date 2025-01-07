@@ -20,18 +20,21 @@ import Link from "next/link";
 import FifthSection from '@/components/HomeAboutthebook'
 import NewBannerSlider from "@/components/HeroBanner"; // Import client component
 import VideoPopup from '@/components/SecondHomeVideoButton'
-import Head from 'next/head';
+import Head from './head';
 
 export const revalidate = 60 // revalidate at most every 5 minutes
 
-// export const metadata: Metadata = {
-//   title: "Next.js Starter Template for SaaS Startups - Solid SaaS Boilerplate",
-//   description: "This is Home for Solid Pro",
-//   // other metadata
-// };
 const POSTS_QUERY = gql `
 query    {
  page(id: "cG9zdDoxNg==") {
+  seoMetaFields{
+      seo{
+        metaDescription
+        metaKeywords
+        pageTitle
+      }
+    }
+
  homeExtraBanner {
         homeBannerSecond {
           homeBannerBackgroundImage {
@@ -257,7 +260,7 @@ query {
 
 async function fetchData() {
   const { data } = await client.query({
-    query: POSTS_QUERY,
+    query: POSTS_QUERY
   });
   return data;
 }
@@ -271,15 +274,11 @@ const sliderSettings = {
 };
 export default async function Home() {
 
-
   const data = await fetchData();
-  console.log(data);
+
   return (
     <main className="mt-[-96px]">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Home Page</title>
-      </Head>
+      <Head data={data}/>
       {/* body start */}
         {/* <NewBannerSlider banners={data.page.homeExtraBanner.homeBannerSecond} /> */}
      

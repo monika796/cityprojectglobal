@@ -26,63 +26,63 @@ const Header = () => {
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [scrollDirection, setScrollDirection] = useState('');
 
+  // useEffect(() => {
+  //   let scrolled = 0;
+
+  //   // const handleScroll = () => {
+  //   //   const scroll = window.scrollY;
+
+  //   //   if (scrolled > scroll) {
+  //   //     setScrollDirection("");
+  //   //           setStickyMenu(true);
+  //   //   }
+  //   //   if(scrolled < scroll){
+  //   //     setScrollDirection('hidden');
+  //   //   }
+  //   //    if(scroll == 0){
+  //   //     setStickyMenu(false);
+  //   //   }
+  //   //   // console.log(scroll);
+  //   //   scrolled = scroll; // Update the previous scroll position
+  //   // };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   // Cleanup event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   useEffect(() => {
-    let scrolled = 0;
-
     const handleScroll = () => {
-      const scroll = window.scrollY;
-
-      if (scrolled > scroll) {
+      
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+        console.log(lastScrollTop);
+      if (st > lastScrollTop) {
+        // downscroll
+        setStickyMenu(false);
+        setScrollDirection("hidden");
+      } else if (st < lastScrollTop && lastScrollTop > 251) {
+        // upscroll
         setScrollDirection("");
-              setStickyMenu(true);
-      }
-      if(scrolled < scroll){
-        setScrollDirection('hidden');
-      }
-       if(scroll == 0){
+        setStickyMenu(true);
+      }else if ( lastScrollTop < 201) {
+        
+        setScrollDirection("");
         setStickyMenu(false);
       }
-      // console.log(scroll);
-      scrolled = scroll; // Update the previous scroll position
+
+      setLastScrollTop(st <= 0 ? 0 : st); // To handle negative scrolling (e.g., mobile)
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Adding scroll event listener
+    window.addEventListener('scroll', handleScroll);
 
-    // Cleanup event listener on component unmount
+    // Cleanup event listener on unmount
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-  // useEffect(() => {
-  //   const handleScroll = () => {
-      
-  //     const st = window.pageYOffset || document.documentElement.scrollTop;
-  //       console.log(lastScrollTop);
-  //     if (st > lastScrollTop) {
-  //       // downscroll
-  //       setStickyMenu(false);
-  //       setScrollDirection("hidden");
-  //     } else if (st < lastScrollTop && lastScrollTop > 251) {
-  //       // upscroll
-  //       setScrollDirection("");
-  //       setStickyMenu(true);
-  //     }else if ( lastScrollTop < 201) {
-        
-  //       setScrollDirection("");
-  //       setStickyMenu(false);
-  //     }
-
-  //     setLastScrollTop(st <= 0 ? 0 : st); // To handle negative scrolling (e.g., mobile)
-  //   };
-
-  //   // Adding scroll event listener
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   // Cleanup event listener on unmount
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [lastScrollTop]);
+  }, [lastScrollTop]);
   const closeNavigation = () => {
     setNavigationOpen(false);
   };
@@ -102,13 +102,13 @@ const Header = () => {
   }, []);
   return (
     <header
-      className={`sticky  left-0 top-0 z-99999 md:pt-0 w-full ${stickyMenu
-          ? "bg-gray-900 !text-white !py-4 shadow transition duration-100 dark:bg-black"
+      className={`sticky left-0 top-4 z-99999 w-full backdrop-blur-lg ${stickyMenu
+          ? " !text-white !py-4 shadow transition duration-100 dark:backdrop-blur-lgk"
           : ""
         } ${isHomePage ? "my-0" : "mt-0"} ${scrollDirection=='hidden' ? "invisible" : "visible" }` }
     >
       {/* <div className="relative mx-auto max-w-[89%]  border-t border-b border-white border-solid items-center justify-between px-4 md:px-8 md:flex 2md:px-0"> */}
-      <div className={`relative mx-auto container max-w-[1480px]  border-t border-b  border-solid items-center justify-between px-4 md:px-0 md:flex 2md:px-0 
+      <div className={`relative mx-auto container max-w-[1480px]  border-t border-b  border-solid items-center justify-between px-4 md:px-0 md:flex
 
       ${isHomePage && isDesktop  || stickyMenu && !isMobile ? "border-white" : "border-[#000000]"}
      

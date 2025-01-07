@@ -48,6 +48,8 @@ const MainComponent = ({ buttonText, pdfUrl, extraclass }) => {
     setNumPages(numPages); // Set the total number of pages
   };
 
+  if(!pdfUrl) return null;
+
   return (
     <div className="relative">
       {/* Button to open the modal */}
